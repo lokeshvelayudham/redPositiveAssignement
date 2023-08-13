@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<div class="container">
+    <h1>Red Positive</h1>
+
+    <div class="form">
+        <h2>Add Data:</h2>
+        <form action="/" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="tel" name="phoneNumber" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="hobbies" placeholder="Hobbies" required>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div class="table">
+        <h2>Data Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Hobbies</th>
+                    <th>Update/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% datase.forEach(entry => { %>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><%= entry._id %></td>
+                    <td><%= entry.name %></td>
+                    <td><%= entry.phoneNumber %></td>
+                    <td><%= entry.email %></td>
+                    <td><%= entry.hobbies %></td>
+                    <td>
+                        <button class="update-btn">Update</button>
+                        <a href="/delete/<%= entry._id %>" class="delete-btn">Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+
+        </table>
+    </div>
+</div>

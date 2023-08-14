@@ -46,11 +46,11 @@ exports.getData = async (req, res) => {
 
 // delete data
 
-exports.deleteData = async (req, res) => {
+module.exports.deleteData = async (req, res) => {
   const { id } = req.params;
 
   try {
-    await Data.findByIdAndDelete(id);
+    await Data.findByIdAndDelete({_id: id});
     res.redirect('/');
     console.log('Data Deleted Sucessfully')
   } catch (error) {

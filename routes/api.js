@@ -10,8 +10,8 @@ const dataController = require('../controllers/dataController');
 router.get('/', dataController.getData);
 router.post('/add', dataController.addData);
 router.post('/send', dataController.sendEmail);
-router.delete('/delete/:id', dataController.deleteData);
-
+// router.delete('/delete/:id', dataController.deleteData);
+router.get('/delete/:id', dataController.deleteData);
   
 
 module.exports = router;

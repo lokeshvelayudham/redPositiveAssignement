@@ -21,7 +21,7 @@ app.use(express.json());
 
 
 // view engine setup (ejs)
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: false}));
 
 // acceseing static files such as css images js
 app.use(express.static('./assets'));

@@ -58,21 +58,43 @@ module.exports.deleteData = async (req, res) => {
   }
 };
 
-  // update data
 
-  exports.updateData = async (req, res) => {
-    const { id } = req.params;
-    const updatedData = req.body;
-  
-    try {
-      const data = await Data.findByIdAndUpdate(id, updatedData, { new: true });
-      res.json(data);
-      res.redirect('/');
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  };
-  
+
+
+// fetch data
+module.exports.fetchData = async(req, res) => {
+  const { id } = req.params;
+  try {
+    const allData = await Data.findById(id)
+    console.log(allData)
+    res.json({ data: allData })
+    // res.render('home', { data: allData });
+  } catch (error) {
+    res.send('Error fetching data');
+  }
+};
+
+
+
+
+  // update data
+exports.updateData = async (req, res) => {
+  const { id } = req.params;
+  const { name, phoneNumber, email, hobbies } = req.body;
+
+  try {
+    const updatedData = await Data.findByIdAndUpdate(
+      id,
+      { name, phoneNumber, email, hobbies },
+      { new: true }
+    );
+    res.redirect('/')
+    // res.json(updatedData);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 exports.sendEmail = async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',

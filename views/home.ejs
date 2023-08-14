@@ -39,8 +39,7 @@
                     <td><%= entry.email %></td>
                     <td><%= entry.hobbies %></td>
                     <td>
-                        <button class="update-btn">Update</button>
-                        <!-- <button class="delete-btn" action="/delete/<%= entry._id %>" method="DELETE">Delete</button> -->
+                        <button class="update-btn" onclick="openUpdateForm('<%= entry._id %>') " > Update </button>
                         <a href="/delete/<%= entry._id %>" class="delete-btn" method="DELETE">Delete</a>
                         <!-- <form action="/delete/<%= entry._id  %>" method="DELETE" class="delete-btn" >
                             <input type="submit"  value="Delete">
@@ -54,3 +53,20 @@
         </table>
     </div>
 </div>
+
+<div id="updateFormContainer" style="display: none;">
+    <h2>Update Data</h2>
+    <p id="updateId"> <%= data._id %> </p>
+    <form id="updateForm">
+      <input type="text" id="updateName" placeholder="Name" required>
+      <input type="tel" id="updatePhoneNumber" placeholder="Phone Number" required>
+      <input type="email" id="updateEmail" placeholder="Email" required>
+      <input type="text" id="updateHobbies" placeholder="Hobbies" required>
+      <button type="button" onclick="submitUpdateForm('_id')">Update</button>
+    </form>
+  </div>
+
+
+
+<script src="/js/script.js"> </script>
+  

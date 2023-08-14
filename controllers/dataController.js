@@ -32,6 +32,7 @@ exports.addData = async (req, res) => {
 //     }
 //   };
 
+// get data
 
 exports.getData = async (req, res) => {
     try {
@@ -43,6 +44,35 @@ exports.getData = async (req, res) => {
     }
   };
 
+// delete data
+
+exports.deleteData = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Data.findByIdAndDelete(id);
+    res.redirect('/');
+    console.log('Data Deleted Sucessfully')
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+  // update data
+
+  exports.updateData = async (req, res) => {
+    const { id } = req.params;
+    const updatedData = req.body;
+  
+    try {
+      const data = await Data.findByIdAndUpdate(id, updatedData, { new: true });
+      res.json(data);
+      res.redirect('/');
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+  
 exports.sendEmail = async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
@@ -66,26 +96,3 @@ exports.sendEmail = async (req, res) => {
       res.send('Error sending email');
     }
   };
-
-exports.updateData = async (req, res) => {
-  const { id } = req.params;
-  const updatedData = req.body;
-
-  try {
-    const data = await Data.findByIdAndUpdate(id, updatedData, { new: true });
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
-
-exports.deleteData = async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    await Data.findByIdAndDelete(id);
-    res.json({ message: 'Data deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};

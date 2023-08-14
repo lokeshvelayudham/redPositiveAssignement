@@ -40,7 +40,8 @@
                     <td><%= entry.hobbies %></td>
                     <td>
                         <button class="update-btn">Update</button>
-                        <a href="/delete/<%= entry._id %>" class="delete-btn">Delete</a>
+                        <!-- <button class="delete-btn" action="/delete/<%= entry._id %>" method="DELETE">Delete</button> -->
+                        <a href="/delete/<%= entry._id %>" class="delete-btn" method="DELETE">Delete</a>
                     </td>
                 </tr>
                 <% }); %>

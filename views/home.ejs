@@ -29,6 +29,22 @@
                     <th>Update/Delete</th>
                 </tr>
             </thead>
+            <tbody>
+                <% data.forEach(entry => { %>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><%= entry._id %></td>
+                    <td><%= entry.name %></td>
+                    <td><%= entry.phoneNumber %></td>
+                    <td><%= entry.email %></td>
+                    <td><%= entry.hobbies %></td>
+                    <td>
+                        <button class="update-btn">Update</button>
+                        <a href="/delete/<%= entry._id %>" class="delete-btn">Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
             
 
         </table>

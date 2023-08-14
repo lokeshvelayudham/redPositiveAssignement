@@ -6,7 +6,7 @@
 
     <div class="form">
         <h2>Add Data:</h2>
-        <form action="/" method="POST">
+        <form action="/add" method="POST">
             <input type="text" name="name" placeholder="Name" required>
             <input type="tel" name="phoneNumber" placeholder="Phone Number" required>
             <input type="email" name="email" placeholder="Email" required>
@@ -29,22 +29,7 @@
                     <th>Update/Delete</th>
                 </tr>
             </thead>
-            <tbody>
-                <% datase.forEach(entry => { %>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td><%= entry._id %></td>
-                    <td><%= entry.name %></td>
-                    <td><%= entry.phoneNumber %></td>
-                    <td><%= entry.email %></td>
-                    <td><%= entry.hobbies %></td>
-                    <td>
-                        <button class="update-btn">Update</button>
-                        <a href="/delete/<%= entry._id %>" class="delete-btn">Delete</a>
-                    </td>
-                </tr>
-                <% }); %>
-            </tbody>
+            
 
         </table>
     </div>

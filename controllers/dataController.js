@@ -1,32 +1,71 @@
 const Data = require('../models/Data');
 
-module.exports.home = function(req, res){
-  console.log(req.cookies);
-  // res.cookie('user_id', 25);
-  return res.render('home', {
-      title: "Home"
-  });
-}
-
-exports.getData = async (req, res) => {
-  try {
-    const data = await Data.find();
-    res.json(data);
-    res.render('index', { datase: data });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
 
 exports.addData = async (req, res) => {
+  const { name, phoneNumber, email, hobbies } = req.body;
+
+  const newData = new Data({
+    name,
+    phoneNumber,
+    email,
+    hobbies,
+  });
+
   try {
-    const newData = new Data(req.body);
     await newData.save();
-    res.json(newData);
+    res.redirect('/');
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.send('Error saving data');
   }
 };
+
+
+// exports.getData = async (req, res) => {
+//     try {
+//       const temporaryData = [
+//         { _id: 1, name: 'John', phoneNumber: '123456789', email: 'john@example.com', hobbies: 'Reading' },
+//         // Add more test data
+//       ];
+//       res.render('home', { data: temporaryData });
+//     } catch (error) {
+//       res.send('Error fetching data');
+//     }
+//   };
+
+
+exports.getData = async (req, res) => {
+    try {
+      const allData = await Data.find();
+      console.log(allData)
+      res.render('home', { data: allData });
+    } catch (error) {
+      res.send('Error fetching data');
+    }
+  };
+
+exports.sendEmail = async (req, res) => {
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'your_email@gmail.com',
+        pass: 'your_password',
+      },
+    });
+  
+    const mailOptions = {
+      from: 'your_email@gmail.com',
+      to: 'lokeshvel@gmail.com',
+      subject: 'Data Details',
+      text: 'Data details: ...' // You can compose the email text here
+    };
+  
+    try {
+      await transporter.sendMail(mailOptions);
+      res.redirect('/');
+    } catch (error) {
+      res.send('Error sending email');
+    }
+  };
 
 exports.updateData = async (req, res) => {
   const { id } = req.params;

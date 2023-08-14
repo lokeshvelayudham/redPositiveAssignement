@@ -2,6 +2,10 @@
 const express = require('express');
 const app = express();
 
+
+// serveless netlify
+const serverless = require('serverless-http');
+
 // port connecxtion
 const port = process.env.PORT || 3001;
 
@@ -41,3 +45,5 @@ app.listen(port, function(err){
 
     console.log(`Server is running on port: ${port}`);
 });
+
+module.exports.handler = serverless(app);

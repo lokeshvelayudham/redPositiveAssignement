@@ -1,4 +1,5 @@
 const Data = require('../models/Data');
+const nodemailer = require('nodemailer');
 
 
 exports.addData = async (req, res) => {
@@ -100,14 +101,14 @@ exports.sendEmail = async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: 'your_email@gmail.com',
-        pass: 'your_password',
+        user: 'test.lokesh.velayudham@gmail.com',
+        pass: 'jaralonina',
       },
     });
   
     const mailOptions = {
-      from: 'your_email@gmail.com',
-      to: 'lokeshvel@gmail.com',
+      from: 'test.lokesh.velayudham@gmail.com',
+      to: 'info@redpositive.in',
       subject: 'Data Details',
       text: 'Data details: ...' // You can compose the email text here
     };

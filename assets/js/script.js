@@ -36,3 +36,20 @@ async function openUpdateForm(id) {
     console.log('Response:', responseText);
     // Handle the response accordingly, e.g., refresh the page or update UI
   }
+
+  async function sendEmail() {
+    try {
+      const response = await fetch('/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+      });
+      if (response.ok) {
+        alert('Email sent successfully!');
+      } else {
+        alert('Failed to send email.');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  }

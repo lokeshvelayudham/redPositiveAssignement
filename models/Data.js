@@ -6,6 +6,8 @@ const dataSchema = new mongoose.Schema({
     phoneNumber: String,
     email: String,
     hobbies: String,
+},{
+    timestamps: true
 });
 
 

@@ -70,7 +70,7 @@ module.exports.fetchData = async(req, res) => {
     res.json({ data: allData })
     // res.render('home', { data: allData });
   } catch (error) {
-    res.send('Error fetching data');
+    res.send('Error fetching data after saving');
   }
 };
 
@@ -88,8 +88,9 @@ exports.updateData = async (req, res) => {
       { name, phoneNumber, email, hobbies },
       { new: true }
     );
-    res.redirect('/')
-    // res.json(updatedData);
+    // res.redirect('/')
+    // res.redirect(req.get('referer'));
+    res.json(updatedData);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }

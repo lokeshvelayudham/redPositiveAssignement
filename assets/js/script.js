@@ -15,16 +15,19 @@ async function openUpdateForm(id) {
     document.getElementById('updateFormContainer').style.display = 'block';
   }
 
-  async function submitUpdateForm() {
-    // console.log('ID:', id); // Check the value of id
+  async function submitUpdateForm(id) {
+    console.log('ID:', id); // Check the value of id
     // Use the provided id parameter directly
-    const id = document.getElementById('updateId').value
+    // const id = document.getElementById('updateId').value
     const name = document.getElementById('updateName').value;
     const phoneNumber = document.getElementById('updatePhoneNumber').value;
     const email = document.getElementById('updateEmail').value;
     const hobbies = document.getElementById('updateHobbies').value;
-  
-    const response = await fetch(`/update/${id}`, {
+
+    const url = `http://localhost:3001/update/${id}`;
+
+    console.log('URL:', url);
+    const response = await fetch(url, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, phoneNumber, email, hobbies })

@@ -46,6 +46,17 @@
                         </form> -->
                     </td>
                 </tr>
+                <div id="updateFormContainer" style="display: none;">
+                    <h2>Update Data</h2>
+                    <p id="updateId">data: <%= entry._id %> </p>
+                    <form id="updateForm">
+                      <input type="text" id="updateName" placeholder="Name" required>
+                      <input type="tel" id="updatePhoneNumber" placeholder="Phone Number" required>
+                      <input type="email" id="updateEmail" placeholder="Email" required>
+                      <input type="text" id="updateHobbies" placeholder="Hobbies" required>
+                      <button type="button" onclick="submitUpdateForm('<%= entry._id %>')">Update</button>
+                    </form>
+                </div>
                 <% }); %>
             </tbody>
             
@@ -54,17 +65,7 @@
     </div>
 </div>
 
-<div id="updateFormContainer" style="display: none;">
-    <h2>Update Data</h2>
-    <p id="updateId"> <%= data._id %> </p>
-    <form id="updateForm">
-      <input type="text" id="updateName" placeholder="Name" required>
-      <input type="tel" id="updatePhoneNumber" placeholder="Phone Number" required>
-      <input type="email" id="updateEmail" placeholder="Email" required>
-      <input type="text" id="updateHobbies" placeholder="Hobbies" required>
-      <button type="button" onclick="submitUpdateForm('_id')">Update</button>
-    </form>
-  </div>
+
 
 
 

@@ -15,7 +15,7 @@ async function openUpdateForm(id) {
     document.getElementById('updateFormContainer').style.display = 'block';
   }
 
-  async function submitUpdateForm(id) {
+  async function submitUpdateForm() {
     // console.log('ID:', id); // Check the value of id
     // Use the provided id parameter directly
     const id = document.getElementById('updateId').value

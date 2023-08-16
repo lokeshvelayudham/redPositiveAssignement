@@ -40,7 +40,7 @@ exports.getData = async (req, res) => {
       console.log(allData)
       res.render('home', { data: allData });
     } catch (error) {
-      res.send('Error fetching data');
+      res.send('Error fetching data from mongodb');
     }
   };
 

@@ -24,7 +24,7 @@ async function openUpdateForm(id) {
     const email = document.getElementById('updateEmail').value;
     const hobbies = document.getElementById('updateHobbies').value;
 
-    const url = `http://localhost:3001/update/${id}`;
+    const url = `/update/${id}`;
 
     console.log('URL:', url);
     const response = await fetch(url, {
